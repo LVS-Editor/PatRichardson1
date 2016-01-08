@@ -1,0 +1,38 @@
+I first created an array of string
+
+string[ ] allCardTypes = new string {“aceofspaces”, ….
+
+then indexed the array like you did in the slot challenge to get the card file name to display the card. 
+
+int numberOfCardsPulled = 0;
+ int pulledCard;
+ bool cardFoundInDeck = false;
+
+List cardsPulled = new List(); // list of shuffle cards
+
+cardsPulled.Add(pullCard()); // add first Card to array, no need to check
+ // first card for duplication
+
+numberOfCardsPulled++; // increment number of cards pulled from deck
+
+while (numberOfCardsPulled != 51)
+ {
+ pulledCard = pullCard(); // pull the next card
+
+cardFoundInDeck = cardsPulled.Where(e => e >= 0).Contains(pulledCard); // make sure card is not in deck already
+
+if (!cardFoundInDeck)
+ { // not in then add the card
+ cardsPulled.Add(pulledCard);
+ numberOfCardsPulled++; // increment the number of cards pulled
+ }
+ }
+ .
+ .
+ .
+ .
+ Random random = new Random();
+ int pullCard()
+ {
+ return random.Next(51);
+ }
