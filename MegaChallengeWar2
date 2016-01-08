@@ -1,0 +1,31 @@
+I did make one modification to above code, the cardsPulled was set to an private array of int, and I called te method shuffle()
+
+public void ShuffleDeck()
+ {
+ int numberOfCardsPulled = 0;
+ int pulledCard;
+ bool cardFoundInDeck = false;
+
+cardsPulled[numberOfCardsPulled] = pullCard(); // add first Card to array, no need to check
+ // first card for duplication
+
+numberOfCardsPulled++; // increment number of cards pulled from deck
+
+while (numberOfCardsPulled != 51)
+ {
+ pulledCard = pullCard(); // pull the next card
+
+cardFoundInDeck = cardsPulled.Where(e => e >= 0).Contains(pulledCard); // make sure card is not in deck already
+
+if (!cardFoundInDeck)
+ { // not in then add the card
+ cardsPulled[numberOfCardsPulled] = pulledCard;
+ numberOfCardsPulled++; // increment the number of cards pulled
+ }
+ }
+ for (int i = 0; i < 52; i++)
+ _shuffledDeck.Reverse(0, cardsPulled[i]);
+
+}
+
+Then I used the same assorted array of integers values 0-51, to shuffle the cards by the reverse function. The code as it's written now shuffles all the cards except the last card. It stays in the same positon. All other cards are shuffled nicely.
